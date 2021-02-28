@@ -1,0 +1,39 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Sat Feb 27 20:50:19 2021
+
+@author: Gabriel M O Vieira - Complexidade 2020/3
+         (Algoritmo guloso) Problema de seleção de atividades
+"""
+#Definições
+class P(): 
+    def __init__(self, s, f): 
+        self.s = s # hora inicio (start) 
+        self.f = f # hora fim
+#Constantes Públicas    
+P = [P(5.1, 9.3), P(9,10), P(11,12), P(14,18), P(12,15), 
+     P(0,5), P(0 ,0), P(5,5.01), P(14,15)]
+n = len(P) 
+#--------------
+def A_Sort(P): #Classifica as n atividades por tempo final crescente
+    
+    P.sort(key = lambda point: point.f) #https://en.wikipedia.org/wiki/Timsort
+    print("\n","--- Atividades em P(s,f) Maximizadas ---")
+    return S(0) #Chamada inicial resolve todo problema
+    
+def S(k): 
+    if k == 0:
+        print(P[0].s,P[0].f) #de acordo com a prova do Teorema 16.1 Cormen,
+        #a Atividade com menor f sempre fará parte do 
+        #maximum-size subset of mutually compatible activities.
+    try:#Pseudo-código Cormen pag 419 implementado
+        m = k + 1    
+        while m <= n and P[m].s < P[k].f: #Procura 1a. atividade compatível 
+           m = m + 1          
+        if m <= n:   
+           print(P[m].s,P[m].f); return S(m) # {P(m)} U S(m)
+        else: return 0
+    finally: return  
+# --------------------- 
+A_Sort(P) 
+ 
