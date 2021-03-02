@@ -1,0 +1,75 @@
+# Função que verifica se um conjunto de  
+# vertices no array  store é uma clique ou não !!  
+def is_clique(b): 
+  
+    # Varre todo conjunto de edges 
+    for i in range(1, b): 
+        for j in range(i + 1, b):   
+                       
+            print(graph[store[i]][store[j]],1,b,i+1,b,store[i],store[j])
+            # Se alguma edge está faltando pra fechar a clique 
+            if (graph[store[i]][store[j]] == 0): 
+                return False;  
+      
+    return True; 
+  
+# Função recursiva para encontrar todos os tamanhos de cliques máximas  
+def maxCliques(i, l): 
+    
+    # Tamanho Máxima Clique
+    max_ = 0; 
+  
+    # Verifica se algum vértice a partir de i+1 pode ser inserido 
+    for j in range(i + 1, n + 1): 
+  
+        # inclui vértice em store 
+        store[l] = j; 
+  
+        # Se graph não é uma clique sw tamanho k então 
+        # não pode ser uma clique por adicionar outra edge 
+        if (is_clique(l + 1)): 
+  
+            # Atualiza maior clique 
+            max_ = max(max_, l); 
+            # Verifica se outra edge pode ser incluida via recursão  
+            max_ = max(max_, maxCliques(j, l + 1))  
+                  
+        return max_; 
+    
+      
+# Teste de Direcionador de código
+if __name__ == '__main__': 
+    
+    edges = [[1,2],[2,3],[3,1]];  
+        
+    MAX = 10; 
+    # Array de vértices 
+    store = [0] * MAX;  
+    
+    size = len(edges);  
+    n = 10;
+
+    # Inicializa Matriz adjacência  com Zeros 
+    graph = [[0 for i in range(MAX)] for j in range(MAX)]; 
+    
+    # Monta Matriz adjacência em função de edges dadas 
+    for i in range(size): 
+        graph[edges[i][0]] [edges[i][1]] = 1; 
+        graph[edges[i][1]] [edges[i][0]] = 1;  
+      
+    # Calcula e registra o grau dos vértices 
+    # (informativo e pode ser omitido)
+    # Inicializa array de graus com Zeros 
+    grau = [0] * MAX; 
+    for i in range(size): 
+       grau[edges[i] [0]] += 1; 
+       grau[edges[i] [1]] += 1; 
+   
+    #print(graph);
+        
+    print("\n","Tamanho da maior Clique =",maxCliques(0, 1)); 
+    print("=================================================");
+    print("Arestas    ",edges,"Total =",size);
+    print("Vértices   ",store, "com vértice de teste incluso");
+    print("Grau       ",grau);
+  
