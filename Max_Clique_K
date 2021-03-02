@@ -1,0 +1,68 @@
+# Função recursiva para decidir se:
+#: Existe clique em graph tal que |V (graph)| ≥ k?  
+def maxCliques(i, l): 
+    
+    # Tamanho Máxima Clique
+    max_ = 0; 
+  
+    # Verifica se algum vértice a partir de i+1 pode ser inserido 
+    for j in range(i + 1, n + 1): 
+  
+        # inclui vértice em store 
+        store[l] = j; 
+  
+        # Se graph não é uma clique sw tamanho k então 
+        # não pode ser uma clique por adicionar outra edge 
+        if (is_clique(l + 1)): 
+  
+            # Atualiza maior clique 
+            max_ = max(max_, l); 
+            # Verifica se outra edge pode ser incluida via recursão  
+            max_ = max(max_, maxCliques(j, l + 1))  
+        print ("\n" * 130, "Está decidido ... ")         
+        return max_; 
+ 
+# Função que verifica se um conjunto de  
+# vertices no array store é uma clique ou não !!  
+def is_clique(b): 
+  
+    # Varre todo conjunto de edges 
+    for i in range(1, b): 
+        for j in range(i + 1, b):   
+                       
+             
+            # Se alguma edge está faltando pra fechar a clique 
+            if (graph[store[i]][store[j]] == 0): 
+                return False;  
+      
+    return True; 
+  
+# Teste de Direcionador de código
+if __name__ == '__main__': 
+    
+    edges = [[1,2],[2,3],[3,1]];  
+        
+    MAX = 10; 
+    # Array de vértices 
+    store = [0] * MAX;  
+    
+    size = len(edges);  
+    n = 10;
+
+    # Inicializa Matriz adjacência  com Zeros 
+    graph = [[0 for i in range(MAX)] for j in range(MAX)]; 
+    
+    # Monta Matriz adjacência em função de edges dadas 
+    for i in range(size): 
+        graph[edges[i][0]] [edges[i][1]] = 1; 
+        graph[edges[i][1]] [edges[i][0]] = 1;  
+  
+#=============
+k = 3;
+# ==========
+
+if maxCliques(0, 1) >= k:     
+    print ("==> Existe clique em graph tal que |V(graph)| ≥ k =",k, "😊");  
+else:     
+    print ("==> Não existe clique em graph tal que |V(graph)| ≥ k =",k, "😌");
+    
