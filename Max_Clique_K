@@ -1,5 +1,5 @@
 # Função recursiva para decidir se:
-#: Existe clique em graph tal que |V (graph)| ≥ k?  
+# Existe clique em graph tal que |V (graph)| ≥ k?  
 def maxCliques(i, l): 
     
     # Tamanho Máxima Clique
