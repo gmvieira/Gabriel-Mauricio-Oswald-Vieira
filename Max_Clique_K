@@ -1,5 +1,10 @@
 # -*- coding: utf-8 -*-
 """
+Created on Sat Feb 27 20:50:19 2021
+
+@author: Gabriel M O Vieira - Complexidade 2020/3
+         (Algoritmo guloso) Problema de seleção de atividades
+"""
 # Função recursiva para decidir se:
 # Existe clique em graph tal que |V (graph)| ≥ k?  
 def maxCliques(i, l): 
