@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+"""
 # Função que verifica se um conjunto de  
 # vertices no array  store é uma clique ou não !!  
 def is_clique(b): 
