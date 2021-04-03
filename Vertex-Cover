@@ -2,7 +2,7 @@
 # of a given undirected graph
 from collections import defaultdict
 
-# This class represents a directed graph
+# This class represents a graph
 # using adjacency list representation
 class Graph:
 
